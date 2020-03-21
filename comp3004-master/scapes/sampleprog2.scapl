@@ -1,0 +1,81 @@
+#This program meets the complex requirements of having at least two (2) loops (including at least one (1) nested loop and at least  
+
+#This program takes values from the user to set the max number to count to and the number of times to repeat it. 
+
+#Expected output if (repeat=3 & maxNumber=3)
+#000111222
+
+#BEGIN
+
+#Declare variables
+dci repeat
+dci maxNumber
+dci i
+dci j
+
+#Read in values for boundaries
+rdi maxNumber
+rdi repeat
+
+#Declare array with size indicated by user
+dca arr maxNumber
+
+mov 0 i
+
+#Loop to populate arr
+L2: prt "L2" 
+cmp i maxNumber
+jls L1
+
+#Compound condition ((i>maxNumber)||(i==maxNumber))
+cmp i maxNumber
+jmr L3
+
+cmp i maxNumber
+jeq L3
+
+L1: prt "L1" 
+mov i $arr+i
+add 1 i
+jmp L2
+
+#PRINT using nested loop (i & j)
+L3: prt "L3"
+mov 0 i
+jmp L4
+
+L4: prt "L4"
+mov 0 j
+
+cmp i maxNumber
+jeq ENDLABEL
+
+L6: prt "L6" 
+cmp j repeat
+jls L5
+
+cmp j repeat
+jeq L7
+
+L5: prt "L5" 
+prt $arr+i
+add 1 j
+jmp L6
+
+L7: prt "L7"
+add 1 i
+jmp L4
+
+ENDLABEL: prt "Printing Variables"
+prt "repeat"
+prt repeat
+prt "maxNumber"
+prt maxNumber
+prt "i"
+prt i
+prt "j"
+prt j
+
+prt "End of Program"
+end
+#END

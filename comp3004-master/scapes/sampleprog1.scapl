@@ -1,0 +1,68 @@
+#Sample program 1 gathers two values from user to compare and populate and array elements with either 0,1,2.
+#The program prints the values of the array at the end of the program.
+
+#BEGIN
+
+#Declare variables
+dci a
+dci b
+dci i
+dca arr 5
+
+#Set defult index of array to 0
+mov 0 i
+
+#Iterate through array, getting values from user and comparing
+L1: cmp i 5
+jeq L5
+
+rdi a
+rdi b
+
+cmp a b
+jls L2
+
+cmp a b
+jmr L3
+
+cmp a b
+jeq L4
+
+#move values 0,1,2 into array element depending on cmp
+L2: mov 0 $arr+i
+prt "move value 0 into array element"
+add 1 i
+jmp L1
+
+L3: mov 1 $arr+i
+prt "move value 1 into array element"
+add 1 i
+jmp L1
+
+L4: mov 2 $arr+i
+prt "move value 2 into array element"
+add 1 i
+jmp L1
+
+#Print array elements
+L5: prt "Print Array Elements"
+mov 0 i
+L6: cmp i 5
+jeq L7
+
+prt $arr+i
+
+add 1 i
+jmp L6
+
+L7: prt "Printing Variables"
+prt "a"
+prt a
+prt "b"
+prt b
+prt "i"
+prt i
+
+prt "End of Program"
+end
+#END
